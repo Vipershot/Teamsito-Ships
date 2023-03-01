@@ -19,10 +19,12 @@
     "plugins": [
         "react",
         "react-hooks",
-        "prettier"
+        "prettier",
+        "material-ui"
     ],
     "rules": {
         "prettier/prettier": "error",
+        "material-ui/rule-name": 2,
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 }
