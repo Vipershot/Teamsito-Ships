@@ -1,10 +1,12 @@
 import React from 'react'
 import {DashboardView} from './views'
+import Navbar from './components/molecules/Navbar/Navbar'
 function App() {
 
   return (
     <div className="App">
-     <DashboardView/>
+      <Navbar/>
+      <DashboardView/>
     </div>
   )
 }
