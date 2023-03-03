@@ -1,11 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
-import App from '../App'
-import { About, Error } from '../views/index'
+import { About, Error, Home } from '../views/index'
 
 const Router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Home />,
     errorElement: <Error />
   },
   {
