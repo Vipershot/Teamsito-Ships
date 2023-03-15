@@ -16,8 +16,14 @@ export const useAxios = url => {
       })
   }, [])
 
+  const post = async req => {
+    const { data } = requests.post(url, req)
+    return data
+  }
+
   return {
     data,
-    loading
+    loading,
+    post
   }
 }

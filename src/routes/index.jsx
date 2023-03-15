@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { About, Error, Home, ShipsView } from '../views/index'
+import { About, Error, Home, ShipsView, AddShipView } from '../views/index'
 
 const Router = createBrowserRouter([
   {
@@ -14,6 +14,10 @@ const Router = createBrowserRouter([
   {
     path: '/ships',
     element: <ShipsView />
+  },
+  {
+    path: '/add-ship',
+    element: <AddShipView />
   }
 ])
 
