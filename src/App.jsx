@@ -1,6 +1,6 @@
 import React from 'react'
 import './css/index.css'
-import { Layout } from './components/organism/Layout/Layout'
+import { Layout } from './components/Layout/Layout'
 function App() {
   return (
     <div className="App">
