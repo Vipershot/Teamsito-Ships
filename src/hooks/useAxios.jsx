@@ -17,6 +17,7 @@ export const useAxios = url => {
   }, [])
 
   const post = async req => {
+    console.log(req)
     const { data } = requests.post(url, req)
     return data
   }
