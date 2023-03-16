@@ -1,23 +1,25 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { About, Error, Home, ShipsView, AddShipView } from '../views/index'
-
+import { Error, DashboardView, ShipsView, AddShipView } from '../views/index'
+import App from '../App'
 const Router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-    errorElement: <Error />
-  },
-  {
-    path: '/about',
-    element: <About />
-  },
-  {
-    path: '/ships',
-    element: <ShipsView />
-  },
-  {
-    path: '/add-ship',
-    element: <AddShipView />
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: '/',
+        element: <DashboardView />
+      },
+      {
+        path: '/ships',
+        element: <ShipsView />
+      },
+      {
+        path: '/add-ship',
+        element: <AddShipView />
+      }
+    ]
   }
 ])
 

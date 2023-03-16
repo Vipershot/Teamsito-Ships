@@ -1,7 +1,5 @@
 import React from 'react'
-
+import { Dashboard } from '../../components/organism'
 export const DashboardView = () => {
-    return (
-        <div>DashboardView</div>
-    )
+  return <Dashboard />
 }
