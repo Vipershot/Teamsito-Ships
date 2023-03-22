@@ -1,12 +1,11 @@
 import React from 'react'
-import { Input } from '../../atoms'
 export const ShipsGroup = ({ ships }) => {
   return (
     <div>
-      {ships?.map(ship => (
-        <li key={ship._id}>
-          {ship.shipName}
-          <img src={ship.imageUrl} alt={ship.shipName} />
+      {ships?.map(({ _id, image, shipName, shipModel }) => (
+        <li key={_id}>
+          {shipName}
+          <img src={image.imageUrl} alt={shipModel} />
         </li>
       ))}
     </div>
