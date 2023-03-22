@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import { useForm } from 'react-hook-form'
 import { Input, Form, Button, Container } from '../../atoms'
 
@@ -7,21 +6,12 @@ export const ShipForm = ({ sendPost }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors }
   } = useForm()
-  const [data, setData] = useState(null)
+
   const [file, setFile] = useState(null)
   const [pathName, setPathName] = useState(null)
 
-  const handleInput = e => {
-    setData({ ...data, [e.target.name]: e.target.value })
-    console.log(data)
-  }
-  const sendData = e => {
-    e.preventDefault()
-    sendPost(data, file)
-  }
   const onFileChange = e => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0]
@@ -36,38 +26,36 @@ export const ShipForm = ({ sendPost }) => {
       }
     }
   }
-  // sendPost({ ...data, image: data.image[0].file })
-  //
-  // sendPost(data)
+  const sendData = data => {
+    sendPost(data, file)
+  }
 
   return (
     <Container>
-      <Form encType="multipart/form-data" onSubmit={sendData}>
+      <Form encType="multipart/form-data" onSubmit={handleSubmit(sendData)}>
         <Input
           placeholder="Ship Name"
           name="shipName"
-          onChange={handleInput}
           className={errors.shipName && 'error'}
+          {...register('shipName', { required: true })}
         />
-
         <Input
           placeholder="Ship Model"
           name="shipModel"
-          onChange={handleInput}
           className={errors.shipModel && 'error'}
+          {...register('shipModel', { required: true })}
         />
         <Input
           name="shipColor"
-          onChange={handleInput}
           placeholder="Color"
           className={errors.shipColor && 'error'}
+          {...register('shipColor', { required: true })}
         />
-
         <Input
           name="shipYear"
-          onChange={handleInput}
           placeholder="Age"
           className={errors.shipYear && 'error'}
+          {...register('shipYear', { required: true })}
         />
         <Input
           onChange={onFileChange}

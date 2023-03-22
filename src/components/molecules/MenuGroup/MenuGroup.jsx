@@ -12,8 +12,8 @@ export const MenuGroup = () => {
       <Title>Menu Group</Title>
 
       <Flex>
-        {listMenu.map(({ title, url }) => (
-          <FlexGrow key={title}>
+        {listMenu.map(({ title, url }, i) => (
+          <FlexGrow key={i}>
             <LinkTo to={url}>
               <Card title={title} />
             </LinkTo>
