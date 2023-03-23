@@ -1,4 +1,7 @@
 export * from './MenuGroup/MenuGroup'
 export * from './Navbar/Navbar'
+export * from './PanelControl/PanelControl'
+export * from './PanelControl/styles'
 export * from './ShipForm/ShipForm'
 export * from './ShipsGroup/ShipsGroup'
+export * from './UpdateForm/UpdateForm'

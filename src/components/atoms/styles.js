@@ -34,3 +34,6 @@ export const Title = styled.h1`
   font-size: 20px;
   font-family: sans-serif;
 `
+export const Image = styled.img`
+  width: 200px;
+`

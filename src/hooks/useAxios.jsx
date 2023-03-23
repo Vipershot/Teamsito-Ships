@@ -20,10 +20,29 @@ export const useAxios = url => {
     const data = requests.post(url, req)
     return data
   }
-
+  const getData = async () => {
+    const { data } = await requests.get(url)
+    setData(data)
+  }
+  const getItem = async () => {
+    try {
+      const data = requests.get(url)
+      return data
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
+  const deleteItem = async id => {
+    await requests.delete(`${url}/${id}`)
+    getData()
+  }
+  const updateItem = async req => await requests.put(url, req)
   return {
     data,
     loading,
-    post
+    post,
+    getItem,
+    deleteItem,
+    updateItem
   }
 }

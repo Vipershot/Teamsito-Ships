@@ -1,11 +1,19 @@
 import React from 'react'
-export const ShipsGroup = ({ ships }) => {
+import { Link } from 'react-router-dom'
+import { Image } from '../../atoms'
+export const ShipsGroup = ({ ships, handles, handleDelete }) => {
   return (
     <div>
       {ships?.map(({ _id, image, shipName, shipModel }) => (
         <li key={_id}>
           {shipName}
-          <img src={image.imageUrl} alt={shipModel} />
+          <Image src={image.imageUrl} alt={shipModel} />
+          {handles && (
+            <>
+              <button onClick={() => handleDelete(_id)}>Delete</button>{' '}
+              <Link to={`/ship/${_id}`}>Update</Link>
+            </>
+          )}
         </li>
       ))}
     </div>

@@ -3,8 +3,7 @@ import { Card, LinkTo, Flex, FlexGrow, Title } from '../../atoms'
 
 export const MenuGroup = () => {
   const listMenu = [
-    { title: 'Ships', url: 'ships' },
-    { title: 'Add Ship', url: 'add-ship' },
+    { title: 'My Ships', url: 'ships' },
     { title: 'Add Ship', url: 'add-ship' }
   ]
   return (

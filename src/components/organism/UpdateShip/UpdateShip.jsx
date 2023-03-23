@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom'
-import { ShipForm } from '../../molecules'
+import { useNavigate, useParams } from 'react-router-dom'
+import { UpdateForm } from '../../molecules'
 import { useAxios } from '../../../hooks/useAxios'
 
-export const AddShip = () => {
+export const UpdateShip = () => {
   const navigate = useNavigate()
-  const { post } = useAxios('api/ship')
+  const { id } = useParams()
+  const { getItem, updateItem } = useAxios(`api/ship/${id}`)
+  const [item, setItem] = useState(null)
   const sendPost = async (req, file) => {
     const form = new FormData()
     form.append('shipName', req.shipName)
@@ -15,12 +17,12 @@ export const AddShip = () => {
     form.append('shipYear', req.shipYear)
     form.append('image', file)
 
-    const res = await post(form)
+    const res = await updateItem(form)
 
     if (res.data) {
       Swal.fire({
-        title: `New Ship ${req.shipName}`,
-        text: 'Ship created successfully',
+        title: `Update Ship ${req.shipName}`,
+        text: 'Ship update successfully',
         icon: 'success',
         timer: 2000
       })
@@ -28,16 +30,21 @@ export const AddShip = () => {
     } else {
       Swal.fire({
         title: 'Error',
-        text: 'Ship created error',
+        text: 'Ship update error',
         icon: 'error',
         timer: 2000
       })
     }
   }
+  useEffect(() => {
+    if (id) {
+      getItem().then(({ data }) => setItem(data))
+    }
+  }, [])
 
   return (
     <>
-      <ShipForm sendPost={sendPost} />
+      <UpdateForm sendPost={sendPost} ship={item} />
     </>
   )
 }
