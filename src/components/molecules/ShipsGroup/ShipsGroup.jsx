@@ -11,7 +11,7 @@ export const ShipsGroup = ({ ships, handles, handleDelete }) => {
           {handles && (
             <>
               <button onClick={() => handleDelete(_id)}>Delete</button>{' '}
-              <Link to={`/ship/${_id}`}>Update</Link>
+              <Link to={`/ships/${_id}`}>Update</Link>
             </>
           )}
         </li>
