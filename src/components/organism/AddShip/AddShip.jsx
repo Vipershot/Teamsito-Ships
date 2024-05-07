@@ -14,7 +14,7 @@ export const AddShip = () => {
     form.append('shipColor', req.shipColor)
     form.append('shipYear', req.shipYear)
     form.append('image', file)
-
+    form.append('role', ['admin'])
     const res = await post(form)
 
     if (res.data) {

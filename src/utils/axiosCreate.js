@@ -4,7 +4,7 @@ export const requests = axios.create({
 })
 
 export const authAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_BACKEND_URL}api/auth`
+  baseURL: `${import.meta.env.VITE_BACKEND_URL}api`
 })
 
 requests.defaults.headers.common['Content-Type'] = 'multipart/form-data'

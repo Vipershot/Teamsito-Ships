@@ -5,7 +5,7 @@ import AuthRoutes from './AuthRoutes'
 import { AuthContext } from '../context/authContext'
 import { useEffect } from 'react'
 export const AppRouter = () => {
-    const { user } = useContext(AuthContext)
+    const { user, } = useContext(AuthContext)
     const token = localStorage.getItem('token')
     useEffect(() => {
         console.log('*************', user)

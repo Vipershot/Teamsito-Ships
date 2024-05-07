@@ -1,5 +1,5 @@
 import React from 'react'
-import { Ships } from '../../components/organism'
+import { TemplateShips } from '../../components/Templates/TemplateShips'
 export const ShipsView = () => {
-  return <Ships />
+  return <TemplateShips />
 }
