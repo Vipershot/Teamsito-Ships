@@ -1,27 +1,13 @@
-import { ShipsGroup, PanelControl } from '../../molecules'
-import { useAxios } from '../../../hooks/useAxios'
-import { useState } from 'react'
+import { useContext, useEffect } from 'react'
+import { TableShips } from '../../molecules/TableShips/TableShips'
+import { BeachesContext } from '../../../context/BeachesContext';
 
 export const Ships = () => {
-  const { data, loading, deleteItem } = useAxios('api/ship')
-  const handleDelete = id => deleteItem(id)
-  const [panel, setPanel] = useState(false)
-  const handlePanel = newState => setPanel(newState)
+  const { playas } = useContext(BeachesContext);
 
   return (
     <>
-      {loading ? (
-        <p>Error</p>
-      ) : (
-        <>
-          <PanelControl handlePanel={handlePanel} />
-          <ShipsGroup
-            ships={data.ship}
-            handles={panel}
-            handleDelete={handleDelete}
-          />
-        </>
-      )}
+      <TableShips data={playas} />
     </>
   )
 }

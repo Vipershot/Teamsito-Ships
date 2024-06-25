@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
 import { FormLogin } from '../../molecules/FormLogin/FormLogin'
-import { authLogin } from '../../../service/auth'
-import { AuthContext } from '../../../context/authContext'
+import { AuthContextFirebase } from '../../../context/AuthContextFirebase';
+import { useNavigate } from 'react-router-dom';
+// import { authLogin } from '../../../service/auth'
 
 export const Login = () => {
-
-	const { login } = useContext(AuthContext)
+	const navigate = useNavigate()
+	const { login } = useContext(AuthContextFirebase);
 
 	const onSubmit = async (value) => {
-		const data = await authLogin(value)
-		login(data)
+		await login(value)
+		navigate('/')
 	}
+
 	return (
 		<FormLogin onSubmit={onSubmit} />
 	)

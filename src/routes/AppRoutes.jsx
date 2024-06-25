@@ -4,24 +4,33 @@ import {
     DashboardView,
     ShipsView,
     AddShipView,
-    UpdateShipView
+    UpdateShipView,
+    UsersView
 } from '../views/index'
 import App from '../App';
-
+import { BeachesProvider } from '../context/BeachesContext'
 function AppRoutes() {
     return (
-        <Routes>
-            <Route path="/" element={<App />}>
-                <Route index element={<DashboardView />} />
-                <Route path="ships">
-                    <Route index element={<ShipsView />} />
-                    <Route path=":id" element={<UpdateShipView />} />
-                    <Route path="create" element={<AddShipView />} />
+        <BeachesProvider>
+            <Routes>
+                <Route path="/" element={<App />}>
+                    <Route path="ships">
+                        <Route index element={<ShipsView />} />
+                        <Route path=":id" element={<UpdateShipView />} />
+                        <Route path="create" element={<AddShipView />} />
+                    </Route>
+                    <Route path="beaches">
+                        <Route index element={<ShipsView />} />
+                        <Route path=":id" element={<UpdateShipView />} />
+                        <Route path="create" element={<AddShipView />} />
+                    </Route>
+                    <Route path="users">
+                        <Route index element={<UsersView />} />
+                    </Route>
                 </Route>
-            </Route>
-            <Route path='/*' element={<Navigate to="/" />} />
-        </Routes>
-
+                <Route path='*' element={<Navigate to="/ships" />} />
+            </Routes>
+        </BeachesProvider>
     );
 }
 
