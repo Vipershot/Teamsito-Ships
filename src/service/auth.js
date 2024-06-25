@@ -1,19 +1,16 @@
-import { authAxios } from '../utils/axiosCreate'
+import { db } from '../firebase'
+import { doc, setDoc } from "firebase/firestore";
+import { v4 as uuid } from 'uuid';
 
-export const authLogin = async (value) => {
-	try {
-		const { data } = await authAxios.post('/auth/login', value)
-		return data.data
-	} catch (error) {
-		console.log('ERROR LOGIN ', error)
-	}
-}
 
-export const authRegister = async (value) => {
+export const createUser = async (value) => {
 	try {
-		const { data } = await authAxios.post('/userShip/register', value)
-		return data.data
+		const newUuid = uuid();
+		await setDoc(doc(db, "administrador", newUuid), {
+			...value,
+		});
+		console.log('Documento establecido en modo offline');
 	} catch (error) {
-		console.log('ERROR LOGIN ', error)
+		console.error('Error al establecer documento:', error);
 	}
 }

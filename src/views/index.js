@@ -7,4 +7,5 @@ export * from './LoginView/LoginView';
 export * from './RegisterView/RegisterView';
 export * from './ShipsView/ShipsView';
 export * from './UpdateShipView/UpdateShipView';
+export * from './UsersView/UsersView';
 export * from './index';

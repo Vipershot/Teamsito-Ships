@@ -9,9 +9,16 @@ export const menuList = [
 		label: 'Barcos',
 		iconOff: Icon,
 		iconLight: IconShipWhite
-	}, {
+	},
+	{
 		path: '/beaches',
 		label: 'Playas',
+		iconOff: Icon,
+		iconLight: IconShipWhite
+	},
+	{
+		path: '/users',
+		label: 'Usuarios',
 		iconOff: Icon,
 		iconLight: IconShipWhite
 	},

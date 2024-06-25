@@ -6,12 +6,13 @@ import LogoPlaya from '../../../../public/LogoPlaya.png'
 
 import { menuList } from '../../../utils/menuList'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { AuthContext } from '../../../context/authContext'
+import { AuthContextFirebase } from '../../../context/AuthContextFirebase'
+
 export const Sidebar = () => {
-	const { logout } = useContext(AuthContext)
+	const { logout } = useContext(AuthContextFirebase);
 	const location = useLocation();
 	const navigate = useNavigate()
-	console.log(location.pathname)
+
 	return (
 		<div className='h-screen border w-52 p-5 flex flex-col justify-between'>
 			<div>
@@ -26,7 +27,10 @@ export const Sidebar = () => {
 				</div>
 			</div>
 			<div className='flex flex-col'>
-				<AppButton variant='ghost' onClick={logout}>
+				<AppButton variant='ghost' onClick={() => {
+					logout()
+					navigate('/auth/login')
+				}}>
 					<img src={Icon} />  Cerrar Sesion
 				</AppButton>
 			</div>

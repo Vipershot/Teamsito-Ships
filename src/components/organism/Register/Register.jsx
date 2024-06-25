@@ -1,14 +1,24 @@
 import React, { useContext } from 'react'
 import { FormRegister } from '../../molecules/FormRegister/FormRegister'
-import { authRegister } from '../../../service/auth'
-import { AuthContext } from '../../../context/authContext'
+import { AuthContextFirebase } from '../../../context/AuthContextFirebase'
+import Swal from 'sweetalert2'
+import { createUser } from '../../../service/auth'
+
 export const Register = () => {
-	const { login } = useContext(AuthContext)
-
+	const { signUp } = useContext(AuthContextFirebase);
 	const onSubmit = async (value) => {
-		const data = await authRegister(value)
-		login(data)
-
+		// try {
+		await signUp(value)
+		await createUser(value)
+		// } catch (error) {
+		// 	console.log(error)
+		// 	Swal.fire({
+		// 		title: 'Error al registrar',
+		// 		text: error,
+		// 		icon: 'error',
+		// 		confirmButtonText: 'Cool'
+		// 	})
+		// }
 	}
 	return (
 		<div>
